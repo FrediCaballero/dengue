@@ -3,8 +3,6 @@ import { Text, SafeAreaView, StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import ButtonComponent from './components/ButtonComponent';
-import ImageComponent from './components/ImageComponent';
 import HomeScreen from './screens/HomeScreen'; // Importa tu pantalla principal
 import CameraScreen from './screens/CameraScreen'; // Importa la pantalla de la cámara
 
