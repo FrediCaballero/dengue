@@ -17,7 +17,7 @@ export default function App() {
           component={HomeScreen}
           options={{
             headerStyle: {
-              backgroundColor: '#2E4053', 
+              backgroundColor: '#154360', 
             },
             headerTintColor: '#a6b092', 
             headerTitleStyle: {
@@ -30,7 +30,7 @@ export default function App() {
           component={CameraScreen}
           options={{
             headerStyle: {
-              backgroundColor: '#2E4053',
+              backgroundColor: '#154360',
             },
             headerTintColor: '#a6b092',
             headerTitleStyle: {

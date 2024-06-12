@@ -1,14 +1,12 @@
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 import * as ImageManipulator from 'expo-image-manipulator';
 
-const {height: DEVICE_HEIGHT, width: DEVICE_WIDTH} = Dimensions.get('window');
-
-// got the dimension from the trained data of the *Teachable Machine*; pixel resolution conversion (8x)
+const { height: DEVICE_HEIGHT, width: DEVICE_WIDTH } = Dimensions.get('window');
 export const BITMAP_DIMENSION = 224;
 
 export const cropPicture = async (imageData, maskDimension) => {
   try {
-    const {uri, width, height} = imageData;
+    const { uri, width, height } = imageData;
     const cropWidth = maskDimension * (width / DEVICE_WIDTH);
     const cropHeight = maskDimension * (height / DEVICE_HEIGHT);
     const actions = [
@@ -35,5 +33,6 @@ export const cropPicture = async (imageData, maskDimension) => {
     return await ImageManipulator.manipulateAsync(uri, actions, saveOptions);
   } catch (error) {
     console.log('Could not crop & resize photo', error);
+    throw error; // Propagate the error for handling in the caller function
   }
 };

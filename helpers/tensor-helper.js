@@ -1,5 +1,5 @@
 import * as tf from '@tensorflow/tfjs';
-import '@tensorflow/tfjs-react-native';
+import { fetch } from '@tensorflow/tfjs-react-native';
 import {bundleResourceIO, decodeJpeg} from '@tensorflow/tfjs-react-native';
 
 import {Base64Binary} from '../utils/utils';
@@ -13,12 +13,13 @@ const modelWeights = require('../model/weights.bin');
 // 3: RGB image
 const TENSORFLOW_CHANNEL = 3;
 
+const modelUrl = 'https://teachablemachine.withgoogle.com/models/hDz6bZ1Oj/model.json';
+
 export const getModel = async () => {
   try {
-    // wait until tensorflow is ready
     await tf.ready();
-    // load the trained model
-    return await tf.loadLayersModel(bundleResourceIO(modelJson, modelWeights));
+    const model = await tf.loadLayersModel(modelUrl, { fetchFunc: fetch });
+    return model;
   } catch (error) {
     console.log('Could not load model', error);
   }

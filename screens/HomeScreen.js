@@ -15,9 +15,9 @@ const HomeScreen = () => {
         Esta aplicación debe ser utilizada con responsabilidad y en beneficio de la salud pública.
       </Text>
       <View style={styles.buttonContainer}>
-        <ButtonComponent title="Prueba Rápida NS1" color="#2E4053" onPress={() => navigation.navigate('Camera')} />
-        <ButtonComponent title="Prueba Rápida IgG/IgM" color="#0E6251" />
-        <ButtonComponent title="Prueba Rápida Completa" color="#2E4053" />
+        <ButtonComponent title="Prueba Rápida NS1" color="#2980B9" onPress={() => navigation.navigate('Camera')} />
+        <ButtonComponent title="Prueba Rápida IgG/IgM" color="#2980B9" />
+        <ButtonComponent title="Prueba Rápida Completa" color="#2980B9" />
       </View>
     </SafeAreaView>
   );

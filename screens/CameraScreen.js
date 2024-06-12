@@ -19,7 +19,7 @@ import {
 } from '../helpers/tensor-helper';
 import { cropPicture } from '../helpers/image-helper';
 
-const RESULT_MAPPING = ['NS1 Positivo', 'NS1 Negativo'];
+const RESULT_MAPPING = ['NS1 Positivo', 'NS1 Negativo', 'NS1 Nulo'];
 
 export default function CameraScreen() {
   const cameraRef = useRef(null);
@@ -30,30 +30,30 @@ export default function CameraScreen() {
   const handleImageCapture = async () => {
     setIsProcessing(true);
     if (cameraRef.current) {
-      const photo = await cameraRef.current.takePictureAsync({ base64: true });
-      console.log('Captured photo:', photo);
-      processImagePrediction(photo.base64);
+      const photo = await cameraRef.current.takePictureAsync({ 
+        base64: true
+      });
+      processImagePrediction(photo);
     }
   };
 
   const processImagePrediction = async (base64Image) => {
-    console.log('Base64 image:', base64Image);
     const croppedData = await cropPicture(base64Image, 300);
-    console.log('Cropped data:', croppedData);
     const model = await getModel();
-    console.log('Model:', model);
     const tensor = await convertBase64ToTensor(croppedData.base64);
-    console.log('Tensor:', tensor);
-
     const prediction = await startPrediction(model, tensor);
-    console.log('Prediction:', prediction);
 
     const highestPrediction = prediction.indexOf(
       Math.max.apply(null, prediction)
     );
     console.log('Highest prediction index:', highestPrediction);
     setPresentedResult(RESULT_MAPPING[highestPrediction]);
-    setIsProcessing(false);
+
+    // Wait for 5 seconds before clearing the result and stopping processing
+    setTimeout(() => {
+      setPresentedResult('');
+      setIsProcessing(false);
+    }, 5000); // 5000 milliseconds = 5 seconds
   };
 
   if (!permission) {
