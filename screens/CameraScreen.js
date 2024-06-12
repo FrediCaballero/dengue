@@ -53,7 +53,7 @@ export default function CameraScreen() {
     setTimeout(() => {
       setPresentedResult('');
       setIsProcessing(false);
-    }, 5000); // 5000 milliseconds = 5 seconds
+    }, 5000); 
   };
 
   if (!permission) {

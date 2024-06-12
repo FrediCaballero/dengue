@@ -5,9 +5,6 @@ import {bundleResourceIO, decodeJpeg} from '@tensorflow/tfjs-react-native';
 import {Base64Binary} from '../utils/utils';
 const BITMAP_DIMENSION = 224;
 
-const modelJson = require('../model/model.json');
-const modelWeights = require('../model/weights.bin');
-
 // 0: channel from JPEG-encoded image
 // 1: gray scale
 // 3: RGB image
@@ -44,11 +41,11 @@ export const convertBase64ToTensor = async (base64) => {
 
 export const startPrediction = async (model, tensor) => {
   try {
-    // predict against the model
+    console.log('Input tensor shape:', tensor.shape); // Verifica la forma del tensor de entrada
     const output = await model.predict(tensor);
-    // return typed array
+    console.log('Output shape:', output.shape); // Verifica la forma del tensor de salida
     return output.dataSync();
   } catch (error) {
-    console.log('Error predicting from tesor image', error);
+    console.log('Error predicting from tensor image', error);
   }
 };
