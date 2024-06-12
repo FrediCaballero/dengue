@@ -12,7 +12,19 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="Inicio"
+          component={HomeScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: '#2E4053', // Cambia esto al color que desees
+            },
+            headerTintColor: '#a6b092', // Cambia el color del texto del header si es necesario
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
         <Stack.Screen name="Camera" component={CameraScreen} />
       </Stack.Navigator>
     </NavigationContainer>

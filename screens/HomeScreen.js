@@ -15,9 +15,9 @@ const HomeScreen = () => {
         Esta aplicación debe ser utilizada con responsabilidad y en beneficio de la salud pública.
       </Text>
       <View style={styles.buttonContainer}>
-        <ButtonComponent title="Reconocimiento de Test" color="#C64756" onPress={() => navigation.navigate('Camera')} />
-        <ButtonComponent title="Ingreso de Datos" color="#184D47" />
-        <ButtonComponent title="Ambos" color="#FAD586" />
+        <ButtonComponent title="Prueba Rápida NS1" color="#2E4053" onPress={() => navigation.navigate('Camera')} />
+        <ButtonComponent title="Prueba Rápida IgG/IgM" color="#0E6251" />
+        <ButtonComponent title="Prueba Rápida Completa" color="#2E4053" />
       </View>
     </SafeAreaView>
   );
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#badba2',
+    backgroundColor: '#17202A',
     padding: 8,
   },
   paragraph: {
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: "#a6b092",
   },
   buttonContainer: {
     width: 300,
